@@ -1,0 +1,208 @@
+{
+  "title": "JSON'S DELI",
+  "menu":
+
+  {
+    "salads":
+    [
+      {
+        "name": "Caesar Salad",
+        "ingredients": [
+          "Romaine Lettuce",
+          "Croutons",
+          "Lemon Juice",
+          "Olive Oil",
+          "Egg",
+          "Worcestershite Sauce",
+          "Garlic",
+          "Parmesan Cheese"
+        ],
+        "calories": 94
+      },
+      {
+        "name": "Coleslaw",
+        "ingredients": [
+          "Cabbage",
+          "Carrot",
+          "Mayonnaise",
+          "Sour Cream",
+          "Buttermilk",
+          "Vinegar",
+          "Sugar"
+        ],
+        "calories": 291
+      },
+      {
+        "name": "Greek Salad",
+        "ingredients": [
+          "Feta",
+          "Elia Kalamatas",
+          "Red Onion",
+          "Cucumber",
+          "Bell Pepper",
+          "Tomato",
+          "Oregano",
+          "Olive Oil"
+        ],
+        "calories": 211
+      }
+    ],
+    "cold sandwiches":
+    [
+      {
+        "name": "Italian Grilled Steak Sandwich",
+        "ingredients": [
+          "Teriyaki Sauce",
+          "Lemon Juice",
+          "Olive Oil",
+          "Worcestershite Sauce",
+          "Beef Flank Steak",
+          "Italian Bread",
+          "Tomatoes",
+          "Green Onions",
+          "Greek Olives",
+          "Pepporoni",
+          "Basil Leaves",
+          "Italian Salad Dressing",
+          "Fresh Arugula"
+        ],
+        "calories": 260
+      },
+      {
+        "name": "Cobb Salad Sub",
+        "ingredients": [
+          "Italian Bread",
+          "Balsamic Vinaigrette",
+          "Baby Spinach",
+          "Ham",
+          "Egg",
+          "Bacon",
+          "Gorgonzola Cheese",
+          "Tomatoes"
+        ],
+        "calories": 223
+      },
+      {
+        "name": "Club Roll Ups",
+        "ingredients": [
+          "Cream Cheese",
+          "Salad Dressing",
+          "Ranch Salad Dressing Mix",
+          "Bacon",
+          "Onion",
+          "Olives",
+          "Pimientos",
+          "Jalapeno Peppers",
+          "Flour Tortillas",
+          "Ham",
+          "Turkey",
+          "Roast Beef",
+          "Cheddar Cheese"
+        ],
+        "calories": 554
+      }
+    ],
+    "hot sandwiches":
+    [
+      {
+        "name": "Philly Cheese Sandwich",
+        "ingredients": [
+          "Boneless Beef Chuck Roast",
+          "Onions",
+          "Worcestershite Sauce",
+          "Garlic Cloves",
+          "Dried Oregano",
+          "Dried Basil",
+          "Sweet Red Pepper",
+          "Green Pepper",
+          "American Cheese",
+          "Hoagie Bun"
+        ],
+        "calories": 546
+      },
+      {
+        "name": "Mac & Cheese Pork Sliders",
+        "ingredients": [
+          "Uncooked Cavaappi Pasta",
+          "Butter",
+          "All-Purpose Flour",
+          "Pepper",
+          "2% Milk",
+          "Shredded Sharp Cheddar Cheese",
+          "Hawaiian Sweet Rolls",
+          "Shredded Pork",
+          "Melted Butter",
+          "Honey",
+          "Ground Mustard",
+          "Jalapeno Peppers"
+        ],
+        "calories": 305
+      }
+    ],
+    "desserts":
+    [
+      {
+        "name": "Chocolate Chip Cookies",
+        "ingredients": [
+          "Butter",
+          "White Sugar",
+          "Brown Sugar",
+          "Eggs",
+          "Vanilla Extract",
+          "Baking Soda",
+          "Hot Water",
+          "Salt",
+          "All-Purpose Flour",
+          "Chocolate Chips",
+          "Walnuts"
+        ],
+        "calories": 146
+      },
+      {
+        "name": "Brownies",
+        "ingredients": [
+          "Butter",
+          "White Sugar",
+          "Eggs",
+          "Vanilla Extract",
+          "Unsweetend Cocoa Powder",
+          "All-Purpose Flour",
+          "Salt",
+          "Baking Powder",
+          "Honey",
+          "Confectioners' Sugar"
+        ],
+        "calories": 183
+      }
+    ],
+    "drinks":
+    [
+      {
+        "name": "Sprite",
+        "ingredients": [
+          "Carbonated Water",
+          "Sugar",
+          "Citric Acid",
+          "Sweeteners",
+          "Acidity Regulator",
+          "Natural Lemon",
+          "Lime Flavourings"
+        ],
+        "calories": 192
+      },
+      {
+        "name": "Diet Coke",
+        "ingredients": [
+          "Carbonated Water",
+          "Colour (Caramel E150d)",
+          "Citric Acid",
+          "Phosphoric Acid",
+          "Aspartame",
+          "Caffeine",
+          "Acidity Regulator"
+        ],
+        "calories": 0
+      }
+    ]
+  }
+}

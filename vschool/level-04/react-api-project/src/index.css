@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 2rem;
+}
+
+.navbar--link {
+  color: black;
+
+  border-radius: 5px;;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.navbar--link:hover {
+  background: black;
+
+  color: white;
+
+  animation-name: navbarLinks;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes navbarLinks {
+  from {background-color: white}
+  to {background-color: black}
+}
+
+/* Home Page */
+
+.home--page {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: auto;
+
+  gap: 1rem;
+
+  margin-top: 4rem;
+
+  padding: 0px 0px 0px .5rem;
+}
+
+.home--title {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.home--title > h1 {
+  background: linear-gradient(90deg, red, blue);
+
+  color: white;
+
+  font-weight: bold;
+
+  border-radius: 5px;
+
+  padding: 1rem;
+}
+
+.home--character--icon {
+  cursor: pointer;
+}
+
+.home--weapon--icon {
+  display: flex;
+  justify-content: center;
+
+  background: black;
+
+  border-radius: 5px;
+
+  width: 49%;
+
+  padding: 1rem;
+
+  cursor: pointer;
+}
+
+/* Characters Page */
+
+.characters--page {
+  display: flex;
+  flex-direction: column;
+}
+
+.character--background {
+  width: 100%;
+  height: 500px;
+
+  border: 1rem solid white;
+}
+
+.character--list {
+  display: flex;
+}
+
+.character--list--item {
+  list-style-type: none;
+}
+
+.character--avatar {
+  height: 350px;
+}
+
+.character--info {
+  padding: 20px 40px 0px 0px;
+}
+
+.character--info > h4 {
+  padding: 10px 10px 40px 10px;
+
+  width: auto;
+}
+
+.character--abilities {
+  display: flex;
+  justify-content: space-around;
+
+  /* padding: 30px 30px 0px 0px; */
+}
+
+.character--abilities > ul {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.display--ability--content {
+  position: relative;
+
+  background: black;
+
+  color: white;
+
+  padding: .5rem;
+  margin-right: 5px;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+
+  width: 200px;
+}
+
+.display--ability--content:hover {
+  visibility: visible;
+}
+
+.ability--avatar {
+  position: relative;
+
+  height: 100px;
+}
+
+.ability--list--item {
+  position: relative;
+
+  list-style-type: none;
+}
+
+.ability--image {
+  height: 100px;
+
+  border-radius: 20px;
+}
+
+.ability--image:hover {
+  cursor: pointer;
+
+  opacity: 55%;
+
+  background: black;
+}
+
+/* Weapons Page */
+
+.weapons--background { 
+  display: flex;
+  flex-direction: column;
+}
+
+.weapons--page {
+  width: 100%;
+  height: 100%;
+
+  border: 1rem solid white;
+  border-bottom: 1px solid black;
+}
+
+.weapons--list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weapon--list--item { 
+  list-style-type: none;
+}
+
+.weapon--avatar {
+  margin-left: 1rem;
+}
+
+/* .weapon--info {
+  
+} */
+
+.weapons--item--info {
+  display: flex;
+}
+
+.weapon--skins {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skins--button {
+  display: flex;
+}
+
+@media only screen and (max-width: 1200px) {
+  .character--info {
+    width: 600px;
+  
+    padding: 20px 40px 0px 0px;
+  }
+}

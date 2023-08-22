@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 5px 10px;
+
+  list-style-type: none;
+  cursor: pointer;
+  
+  /* background: lightgray; */
+}
+
+li {
+  border: 1px solid black;
+
+  padding: 2px 4px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 500px;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+button {
+  padding: 5px 10px;
+}
+
+h4 {
+  display: flex;
+  justify-content: center;
+
+  /* background: lightgray; */
+}
+
+/*  */
+/*  */
+/*  */
+
+.light--theme {
+  background: lightgray;
+}
+
+.dark--theme {
+  background: black;
+  color: white;
+}

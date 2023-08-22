@@ -1,0 +1,132 @@
+* {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+#first-row {
+  background-color: #F5C6D6;
+  height: 75px;
+  width: 100%;
+}
+
+#second-row {
+  background-color: #EE2E84;
+  height: 75px;
+  width: 100%;
+}
+
+#third-row {
+  background-color: #EE2E84;
+  height: 75px;
+  width: 100%;
+}
+
+#fourth-row {
+  background-color: #EE2E84;
+  height: 75px;
+  width: 100%;
+}
+
+#fifth-row {
+  background-color: #EE2E84;
+  height: 75px;
+  width: 100%;
+}
+
+#sixth-row {
+  background-color: #85CFD8;
+  height: 75px;
+  width: 100%;
+}
+
+#seventh-row {
+  background-color: #85CFD8;
+  height: 75px;
+  width: 100%;
+}
+
+#eigth-row {
+  background-color: #8DC63F;
+  height: 75px;
+  width: 100%;
+}
+
+#ninth-row {
+  background-color: #E76E34;
+  height: 75px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #first-row {
+    border: 7.5px solid white;
+    background-color: #F5C6D6;
+    height: 100px;
+    width: 100%;
+  }
+  
+  #second-row {
+    border: 7.5px solid white;
+    background-color: #EE2E84;
+    height: 100px;
+    width: 25%;
+  }
+  
+  #third-row {
+    border: 7.5px solid white;
+    background-color: #EE2E84;
+    height: 100px;
+    width: 24%;
+  }
+  
+  #fourth-row {
+    border: 7.5px solid white;
+    background-color: #EE2E84;
+    height: 100px;
+    width: 24%;
+  }
+  
+  #fifth-row {
+    border: 7.5px solid white;
+    background-color: #EE2E84;
+    height: 100px;
+    width: 25%;
+  }
+  
+  #sixth-row {
+    border: 7.5px solid white;
+    background-color: #85CFD8;
+    height: 100px;
+    width: 50%;
+  }
+  
+  #seventh-row {
+    border: 7.5px solid white;
+    background-color: #85CFD8;
+    height: 100px;
+    width: 49%;
+  }
+  
+  #eigth-row {
+    border: 7.5px solid white;
+    background-color: #8DC63F;
+    height: 100px;
+    width: 75%;
+  }
+  
+  #ninth-row {
+    border: 7.5px solid white;
+    background-color: #E76E34;
+    height: 100px;
+    width: 24%;
+  }
+
+}
