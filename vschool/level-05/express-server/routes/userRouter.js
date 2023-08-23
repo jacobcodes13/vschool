@@ -8,15 +8,32 @@ const users = [
   { name: "Noah", age: 20, hobby: "Gym", _id: uuidv4() }
 ]
 
+// GET All
 userRouter.get("/", (req, res) => {
   res.send(users)
 })
 
+// GET One
+userRouter.get("/:userId", (req, res) => {
+  const userId = req.params.userId
+  const foundUser = users.find(user => user._id === userId)
+  res.send(foundUser)
+})
+
+// POST One
 userRouter.post("/", (req, res) => {
   const newUser = req.body
   newUser._id = uuidv4()
   users.push(newUser)
   res.send(`Successfully added ${newUser.name} to the database`)
+})
+
+// DELETE One
+userRouter.delete("/:userId", (req, res) => {
+  const userId = req.params.userId
+  const userIndex = users.findIndex(user => user._id === userId)
+  users.splice(userIndex, 1)
+  res.send("Successfully deleted User!")
 })
 
 
