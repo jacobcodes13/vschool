@@ -36,6 +36,15 @@ userRouter.delete("/:userId", (req, res) => {
   res.send("Successfully deleted User!")
 })
 
+// UPDATE One
+userRouter.put("/:userId", (req, res) => {
+  const userId = req.params.userId
+  const updatedObject = req.body
+  const userIndex = users.findIndex(user => user._id === userId)
+  const updatedUser = Object.assign(users[userIndex], updatedObject)
+  res.send(updatedUser)
+})
+
 
 
 
