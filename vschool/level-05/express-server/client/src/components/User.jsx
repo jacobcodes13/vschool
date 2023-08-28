@@ -6,8 +6,10 @@ export default function User(props) {
   const { name, hobby, _id } = props
   return (
     <div>
-      <h1>Name: { name }</h1>
-      <p>Hobby: { hobby }</p>
+      <div className="user">
+        <h1>Name: { name }</h1>
+        <p>Hobby: { hobby }</p>
+      </div>
     </div>
   )
 }

@@ -25,7 +25,7 @@ userRouter.post("/", (req, res) => {
   const newUser = req.body
   newUser._id = uuidv4()
   users.push(newUser)
-  res.send(`Successfully added ${newUser.name} to the database`)
+  res.send(newUser)
 })
 
 // DELETE One

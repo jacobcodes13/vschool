@@ -4,3 +4,25 @@
   margin: 0;
   padding: 0;
 }
+
+h1 {
+  margin: 5px;
+}
+
+p {
+  margin: 5px;
+}
+
+.user--container {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 32px;
+}
+
+.user {
+  border: 1px solid #333;
+
+  padding: 10px;
+  margin: 5px;
+}
