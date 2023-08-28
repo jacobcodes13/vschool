@@ -1,8 +1,10 @@
 const express = require("express")
 const app = express()
+const morgan = reuire("morgan")
 
 
 app.use(express.json())
+app.use(morgan("dev"))
 
 app.use("/users", require("./routes/userRouter"))
 
