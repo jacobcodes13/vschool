@@ -6,9 +6,9 @@ const morgan = require("morgan")
 app.use(express.json())
 app.use(morgan("dev"))
 
-app.use("/users", require("./routes/userRouter"))
+app.use("/api/users", require("./routes/userRouter"))
 
-app.use("/items", require("./routes/itemRouter"))
+app.use("/api/items", require("./routes/itemRouter"))
 
 
 app.listen(9000, () => {
