@@ -20,6 +20,22 @@ function App() {
       .catch(err => onsole.log("axios POST request error: ", err))
   }
 
+  function deleteUser(userId) {
+    axios.delete(`/api/users/${userId}`)
+      .then(res => {
+        setUsers(prevUsers => prevUsers.filter(user => user._id !== userId))
+      })
+      .catch(err => console.log("axios DELETE request error: ", err))
+  }
+
+  function editUser(updatesObj, userId) {
+    axios.put(`/api/users/${userId}`, updatesObj)
+      .then(res => {
+        setUsers(prevUsers => prevUsers.map(user => user._id !== userId ? user : res.data)) 
+      })
+      .catch(err => console.log("axios PUT request error: ", err))
+  }
+
   useEffect(() => {
     getUsers()
   }, [])
@@ -28,9 +44,16 @@ function App() {
     <div>
       <div className="user--container">
         <AddUserForm 
-          addUser={addUser}
+          submit={addUser}
+          btnText="Add User"
         />
-        { users.map(user => <User {...user} key={user.name}/>) }
+        { users.map(user => 
+          <User
+            {...user}
+            key={user.name}
+            deleteUser={deleteUser}
+            editUser={editUser}
+          />) }
       </div>
     </div>
   )

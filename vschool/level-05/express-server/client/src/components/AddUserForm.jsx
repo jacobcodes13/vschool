@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 export default function AddUserForm(props) {
-  const initialInputs = { name: "", age: 0, hobby: "" }
+  const initialInputs = { name: props.name || "", age: props.age || 0, hobby: props.hobby || "" }
   const [ inputs, setInputs ] = useState(initialInputs)
 
   function handleChange(e) {
@@ -12,7 +12,7 @@ export default function AddUserForm(props) {
   function handleSubmit(e) {
     e.preventDefault()
 
-    props.addUser(inputs)
+    props.submit(inputs, props._id)
 
     setInputs(initialInputs)
   }
@@ -40,7 +40,7 @@ export default function AddUserForm(props) {
         onChange={handleChange} 
         placeholder="Hobby"
       />
-     <button>Add User</button>
+     <button>{ props.btnText }</button>
     </form>
   )
 }
