@@ -26,25 +26,25 @@ const bounties = [
   }
 ]
 
-app.get("/", (req, res) => {
+bountyRouter.get("/", (req, res) => {
   res.send(bounties)
 })
 
-app.post("/", (req, res) => {
+bountyRouter.post("/", (req, res) => {
   const newBounty = req.body
   newBounty._id = uuidv4()
   bounties.push(newBounty)
   res.send(`Added ${newBounty.name} to the database`)
 })
 
-app.delete("/:bountyId", (req, res) => {
+bountyRouter.delete("/:bountyId", (req, res) => {
   const bountyId = req.params.bountyId
   const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
   bounties.splice(bountyIndex, 1)
   res.send("Succedssfully deleted Bounty!")
 })
 
-app.put("/:bountyId", (req, res) => {
+bountyRouter.put("/:bountyId", (req, res) => {
   const bountyId = req.params.bountyId
   const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
   const updatedBounty = Object.assign(bounties[bountyIndex], req.body)

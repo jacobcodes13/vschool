@@ -5,7 +5,7 @@ const morgan = require("morgan")
 app.use(express.json())
 app.use(morgan("dev"))
 
-app.use("/bountys", require("./routes/bountyRouter"))
+app.use("/api/bounty", require("./routes/bountyRouter"))
 
 
 app.listen(8000, () => {
