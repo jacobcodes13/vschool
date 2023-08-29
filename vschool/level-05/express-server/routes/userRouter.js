@@ -20,6 +20,13 @@ userRouter.get("/:userId", (req, res) => {
   res.send(foundUser)
 })
 
+// GET by Genre
+userRouter.get("/search/hobby", (req, res) => {
+  const hobby = req.query.hobby
+  const filteredUsers = users.filter(user => user.hobby === hobby)
+  res.send(filteredUsers)
+})
+
 // POST One
 userRouter.post("/", (req, res) => {
   const newUser = req.body
