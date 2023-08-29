@@ -20,6 +20,14 @@ function App() {
       .catch(err => console.log("axios POST request error: ", err))
   }
 
+  function deleteBounty(bountyId) {
+    axios.delete(`/api/bounty/${bountyId}`)
+      .then(res => {
+        setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== bountyId))
+      })
+      .catch(err => console.log("axios DELETE request error: ", err))
+  }
+
   useEffect(() => {
     getBounty()
   }, [])
@@ -29,12 +37,14 @@ function App() {
     <div>
       <div className="bounty--container">
         <AddBountyForm
-          addBounty={addBounty}
-        />
+          submit={addBounty}
+          btnText="Add Bounty"
+          />
         { bounties.map(bounty => 
           <Bounty
-            {...bounty}
-            key={bounty.name}
+          {...bounty}
+          key={bounty.name}
+          deleteBounty={deleteBounty}
           />)
         }
       </div>

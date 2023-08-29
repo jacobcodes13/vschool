@@ -46,7 +46,7 @@ export default function AddBountyForm(props) {
         onChange={handleChange}
         placeholder="Type (Sith or Jedi)"    
       />
-      <button>Add Bounty</button>
+      <button>{ props.btnText }</button>
     </form>
   )
 }
