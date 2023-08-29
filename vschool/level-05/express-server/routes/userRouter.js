@@ -14,13 +14,17 @@ userRouter.get("/", (req, res) => {
 })
 
 // GET One
-userRouter.get("/:userId", (req, res) => {
+userRouter.get("/:userId", (req, res, next) => {
   const userId = req.params.userId
   const foundUser = users.find(user => user._id === userId)
+  if (!foundUser) {
+    const error = new Error(`The User with id ${userId} was not found.`)
+    return next(error)
+  }
   res.send(foundUser)
 })
 
-// GET by Genre
+// GET by Hobby
 userRouter.get("/search/hobby", (req, res) => {
   const hobby = req.query.hobby
   const filteredUsers = users.filter(user => user.hobby === hobby)

@@ -9,7 +9,7 @@ function App() {
   function getUsers() {
     axios.get("/api/users")
     .then(res => setUsers(res.data))
-    .catch(err => console.log("axios GET request error: ", err))
+    .catch(err => console.log(err.response.data.errMsg))
   }
 
   function addUser(newUser) {

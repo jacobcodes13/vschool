@@ -14,6 +14,7 @@ app.use("/api/items", require("./routes/itemRouter"))
 // Error Handling //
 app.use((err, req, res, next) => {
   console.log(err)
+  return res.send({errMsg: err.message})
 })
 
 
