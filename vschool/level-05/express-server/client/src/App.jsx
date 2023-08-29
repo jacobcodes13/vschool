@@ -17,7 +17,7 @@ function App() {
       .then(res => {
         setUsers(prevUsers => [...prevUsers, res.data])
       })
-      .catch(err => onsole.log("axios POST request error: ", err))
+      .catch(err => console.log("axios POST request error: ", err))
   }
 
   function deleteUser(userId) {
