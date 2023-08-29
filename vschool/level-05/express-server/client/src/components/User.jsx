@@ -25,7 +25,7 @@ export default function User(props) {
             hobby={ hobby }
             _id={ _id }
             btnText="Submit Edit"
-            submit={props.editUser}
+            submit={ props.editUser }
           />
           <button onClick={() => setEditToggle(prevToggle => !prevToggle)}>Close</button>
         </>

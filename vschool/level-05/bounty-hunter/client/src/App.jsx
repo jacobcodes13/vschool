@@ -28,6 +28,14 @@ function App() {
       .catch(err => console.log("axios DELETE request error: ", err))
   }
 
+  function editBounty(updatedObj, bountyId) {
+    axios.put(`/api/bounty/${bountyId}`, updatedObj)
+      .then(res => {
+        setBounties(prevBounties => prevBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data))
+      })
+      .catch(err => console.log("axios PUT request error: ", err))
+  }
+
   useEffect(() => {
     getBounty()
   }, [])
@@ -42,11 +50,11 @@ function App() {
           />
         { bounties.map(bounty => 
           <Bounty
-          {...bounty}
-          key={bounty.name}
-          deleteBounty={deleteBounty}
-          />)
-        }
+            {...bounty}
+            key={bounty.name}
+            deleteBounty={deleteBounty}
+            editBounty={editBounty}
+          />) }
       </div>
     </div>
   )

@@ -47,6 +47,11 @@ button {
   color: whitesmoke;
 }
 
+.edit--btn {
+  background-color: cornflowerblue;
+  color: whitesmoke;
+}
+
 .bounty--container {
   display: flex;
   flex-direction: column;
