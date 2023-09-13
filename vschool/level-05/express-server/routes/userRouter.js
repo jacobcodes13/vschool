@@ -3,7 +3,7 @@ const userRouter = express.Router()
 const User = require("../models/user")
 
 
-// GET All
+// GET All //
 userRouter.get("/", async (req, res, next) => {
   try {
     const users = await User.find();
@@ -14,7 +14,20 @@ userRouter.get("/", async (req, res, next) => {
   }
 });
 
-// GET One
+// POST One //
+userRouter.post("/", async (req, res, next) => {
+  try {
+    const newUser = new User(req.body);
+    const savedUser = await newUser.save();
+    res.status(201).send(savedUser);
+  } catch (err) {
+    res.status(500);
+    return next(err);
+  }
+});
+
+
+// GET One //
 userRouter.get("/:userId", (req, res, next) => {
   const userId = req.params.userId
   const foundUser = users.find(user => user._id === userId)
@@ -26,22 +39,14 @@ userRouter.get("/:userId", (req, res, next) => {
   res.status(200).send(foundUser)
 })
 
-// GET by Hobby
+// GET by Hobby //
 userRouter.get("/search/hobby", (req, res) => {
   const hobby = req.query.hobby
   const filteredUsers = users.filter(user => user.hobby === hobby)
   res.status(200).send(filteredUsers)
 })
 
-// POST One
-userRouter.post("/", (req, res) => {
-  const newUser = req.body
-  newUser._id = uuidv4()
-  users.push(newUser)
-  res.status(201).send(newUser)
-})
-
-// DELETE One
+// DELETE One //
 userRouter.delete("/:userId", (req, res) => {
   const userId = req.params.userId
   const userIndex = users.findIndex(user => user._id === userId)
@@ -49,7 +54,7 @@ userRouter.delete("/:userId", (req, res) => {
   res.send("Successfully deleted User!")
 })
 
-// UPDATE One
+// UPDATE One //
 userRouter.put("/:userId", (req, res) => {
   const userId = req.params.userId
   const updatedObject = req.body

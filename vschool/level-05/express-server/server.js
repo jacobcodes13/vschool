@@ -14,7 +14,10 @@ app.use("/api/users", require("./routes/userRouter"))
 app.use("/api/items", require("./routes/itemRouter"))
 
 // Connect to DB //
-mongoose.connect('mongodb+srv://jacobcodes13:xgKCwzNDSmJtKWVF@cluster0.s4tfwqf.mongodb.net/',{useNewUrlParser: true})
+mongoose.connect('mongodb+srv://jacobcodes13:xgKCwzNDSmJtKWVF@cluster0.s4tfwqf.mongodb.net/', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error(err));
 
