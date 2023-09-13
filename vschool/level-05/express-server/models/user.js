@@ -5,15 +5,15 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   name: {
     type: String,
-    require: true
+    required: true
   },
   age: {
     type: Number,
-    require: true
+    required: true
   },
   hobby: {
     type: String,
-    require: true
+    required: true
   }
 })
 
