@@ -14,7 +14,7 @@ app.use("/api/users", require("./routes/userRouter"))
 app.use("/api/items", require("./routes/itemRouter"))
 
 // Connect to DB //
-mongoose.connect('mongodb+srv://jacobcodes13:xgKCwzNDSmJtKWVF@cluster0.s4tfwqf.mongodb.net/', {
+mongoose.connect('mongodb+srv://jacobcodes13:xgKCwzNDSmJtKWVF@cluster0.s4tfwqf.mongodb.net/expressServer', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
