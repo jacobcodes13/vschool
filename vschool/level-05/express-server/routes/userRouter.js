@@ -94,14 +94,41 @@ userRouter.delete("/:userId", async (req, res, next) => {
 //   })
 // })
 
-// UPDATE One //
-userRouter.put("/:userId", (req, res) => {
-  const userId = req.params.userId
-  const updatedObject = req.body
-  const userIndex = users.findIndex(user => user._id === userId)
-  const updatedUser = Object.assign(users[userIndex], updatedObject)
-  res.status(201).send(updatedUser)
-})
+// Version 7 Mongoose for UPDATE One //
+userRouter.put("/:userId", async (req, res, next) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.userId,
+      req.body,
+      { new: true }
+    );
 
+    if (!updatedUser) {
+      res.status(404).send("User not found");
+    } else {
+      res.status(200).send(updatedUser);
+    }
+  } catch (err) {
+    res.status(500);
+    return next(err);
+  }
+});
+
+
+// // Version 6 Mongoose for UPDATE One //
+// userRouter.put("/:userId", (req, res, next) => {
+//   User.findOneAndUpdate(
+//     { _id: req.params.userId }, // find this one to update
+//     req.body, // update the object with this data
+//     { new: true }, // send back the updated version
+//     (err, updatedUser) => {
+//       if (err) {
+//         res.status(500);
+//         return next(err)
+//       }
+//       return res.status(201).send(updatedUser)
+//     }
+//   )
+// })
 
 module.exports = userRouter
