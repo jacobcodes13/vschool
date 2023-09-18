@@ -21,6 +21,10 @@ inventoryRouter.post("/", (req, res, next) => {
       res.status(500)
       return next(err)
     }
+    if (!savedInventoryItem) {
+      res.status(404)
+      return next(new Error("Item not found!"))
+    }
     return res.status(201).send(savedInventoryItem)
   })
 })
