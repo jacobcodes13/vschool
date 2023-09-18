@@ -61,12 +61,16 @@ userRouter.post("/", async (req, res, next) => {
 //   res.status(200).send(foundUser)
 // })
 
-// // GET by Hobby //
-// userRouter.get("/search/hobby", (req, res) => {
-//   const hobby = req.query.hobby
-//   const filteredUsers = users.filter(user => user.hobby === hobby)
-//   res.status(200).send(filteredUsers)
-// })
+// GET by Hobby //
+userRouter.get("/search/hobby", (req, res) => {
+  User.find({ hobby: req.query.hobby }, (err, users) => {
+    if (err) {
+      res.status(500);
+      return next(err)
+    }
+    return res.status(200).send(users)
+  })
+})
 
 // Version 7 Mongoose for DELETE One //
 userRouter.delete("/:userId", async (req, res, next) => {
@@ -106,7 +110,7 @@ userRouter.put("/:userId", async (req, res, next) => {
     if (!updatedUser) {
       res.status(404).send("User not found");
     } else {
-      res.status(200).send(updatedUser);
+      res.status(201).send(updatedUser);
     }
   } catch (err) {
     res.status(500);
@@ -114,21 +118,20 @@ userRouter.put("/:userId", async (req, res, next) => {
   }
 });
 
-
-// // Version 6 Mongoose for UPDATE One //
-// userRouter.put("/:userId", (req, res, next) => {
-//   User.findOneAndUpdate(
-//     { _id: req.params.userId }, // find this one to update
-//     req.body, // update the object with this data
-//     { new: true }, // send back the updated version
-//     (err, updatedUser) => {
-//       if (err) {
-//         res.status(500);
-//         return next(err)
-//       }
-//       return res.status(201).send(updatedUser)
-//     }
-//   )
-// })
+// Version 6 Mongoose for UPDATE One //
+userRouter.put("/:userId", (req, res, next) => {
+  User.findOneAndUpdate(
+    { _id: req.params.userId }, // find this one to update
+    req.body, // update the object with this data
+    { new: true }, // send back the updated version
+    (err, updatedUser) => {
+      if (err) {
+        res.status(500);
+        return next(err)
+      }
+      return res.status(201).send(updatedUser)
+    }
+  )
+})
 
 module.exports = userRouter

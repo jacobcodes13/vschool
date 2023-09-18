@@ -36,6 +36,16 @@ function App() {
       .catch(err => console.log("axios PUT request error: ", err))
   }
 
+  function handleFilter(e) {
+    if (e.target.value === "reset") {
+      getUsers()
+    } else {
+      axios.get(`/api/users/search/hobby?hobby=${e.target.value}`)
+      .then(res => setUsers(res.data))
+      .catch(err => console.log("axios GET request error w/ Hobby: ", err))
+    }
+  }
+
   useEffect(() => {
     getUsers()
   }, [])
@@ -43,10 +53,20 @@ function App() {
   return (
     <div>
       <div className="user--container">
+
         <AddUserForm 
           submit={addUser}
           btnText="Add User"
         />
+
+        <h4>Filter by Hobby</h4>
+        <select onChange={handleFilter} className="filter--form">
+          <option value="reset">All Hobbies</option>
+          <option value="gym">Gym</option>
+          <option value="cook">Cook</option>
+          <option value="games">Games</option>
+        </select>
+
         { users.map(user => 
           <User
             {...user}
@@ -54,6 +74,7 @@ function App() {
             deleteUser={deleteUser}
             editUser={editUser}
           />) }
+
       </div>
     </div>
   )
