@@ -15,6 +15,8 @@ mongoose.connect("mongodb+srv://jacobcodes13:uPnBKBk9Jr7r3guM@crud-store.ftckcor
   console.log("Connected to MongoDB!", err)
 })
 
+app.use("/api/inventory", require("./routes/inventoryRouter"))
+
 // Error Handler //
 app.use((err, req, res, next) => {
   console.log(err)
