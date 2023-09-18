@@ -13,6 +13,17 @@ inventoryRouter.get("/", (req, res, next) => {
   })
 })
 
+// GET One //
+inventoryRouter.get("/:itemId", (req, res, next) => {
+  Inventory.find({ _id: req.params.itemId }, (err, foundItem) => {
+    if (err) {
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(foundItem)
+  })
+})
+
 // POST One //
 inventoryRouter.post("/", (req, res, next) => {
   const newInventoryItem = new Inventory(req.body)
@@ -27,6 +38,33 @@ inventoryRouter.post("/", (req, res, next) => {
     }
     return res.status(201).send(savedInventoryItem)
   })
+})
+
+// DELETE One //
+inventoryRouter.delete("/:itemId", (req, res, next) => {
+  Inventory.findOneAndDelete({ _id: req.params.itemId }, (err, deletedItem) => {
+    if (err) {
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(`Successfully deleted ${deletedItem.title}from the MongoDB!`)
+  })
+})
+
+// UPDATE One //
+inventoryRouter.put("/:itemId", (req, res, next) => {
+  Inventory.findByIdAndUpdate(
+    { _id: req.params.itemId },
+    req.body,
+    { new: true },
+    (err, updatedItem) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      return res.status(201).send(updatedItem)
+    }
+  )
 })
 
 module.exports = inventoryRouter
