@@ -32,15 +32,24 @@ bountyRouter.delete("/:bountyId", (req, res, next) => {
       res.status(500)
       return next(err)
     }
-    return res.status(201).send(`Successfully deleted ${deletedBounty.title} from the MongoDB!`)
+    return res.status(200).send(`Successfully deleted ${deletedBounty.firstName} from the MongoDB!`)
   })
 })
 
+// UPDATE One //
 bountyRouter.put("/:bountyId", (req, res) => {
-  const bountyId = req.params.bountyId
-  const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
-  const updatedBounty = Object.assign(bounties[bountyIndex], req.body)
-  res.send(updatedBounty)
+  Bounty.findOneAndUpdate(
+    { _id: req.params.bountyId },
+    req.body,
+    { new: true },
+    (err, updatedBounty) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      return res.status(200).send(updatedBounty)
+    }
+  )
 })
 
 
