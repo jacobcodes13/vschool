@@ -13,6 +13,17 @@ bountyRouter.get("/", (req, res, next) => {
   })
 })
 
+// GET One //
+bountyRouter.get("/:bountyId", (req, res, next) => {
+  Bounty.find({ _id: req.params.bountyId }, (err, bounty) => {
+    if (err) {
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(bounty)
+  })
+})
+
 // POST One //
 bountyRouter.post("/", (req, res) => {
   const newBounty = new Bounty(req.body)
