@@ -7,8 +7,7 @@ const bountySchema = new Schema({
     require: true
   },
   lastName: {
-    type: String,
-    require: true
+    type: String
   },
   living: {
     type: Boolean,
