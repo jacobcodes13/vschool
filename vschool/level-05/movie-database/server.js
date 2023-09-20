@@ -15,6 +15,8 @@ mongoose.connect("mongodb+srv://jacobcodes13:153dE9GX2UdiRMqw@cluster0.rt2skov.m
   console.log("Connected to MongoDB!", err)
 })
 
+app.use("/api/movie", require("./routes/movieRouter"))
+
 // Error Handler //
 app.use((err, req, res, next) => {
   console.log(err)
