@@ -2,12 +2,9 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const bountySchema = new Schema({
-  firstName: {
+  name: {
     type: String,
     require: true
-  },
-  lastName: {
-    type: String
   },
   living: {
     type: Boolean,

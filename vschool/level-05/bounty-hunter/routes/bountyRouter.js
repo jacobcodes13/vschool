@@ -25,7 +25,7 @@ bountyRouter.get("/:bountyId", (req, res, next) => {
 })
 
 // POST One //
-bountyRouter.post("/", (req, res) => {
+bountyRouter.post("/", (req, res, next) => {
   const newBounty = new Bounty(req.body)
   newBounty.save((err, savedBounty) => {
     if (err) {
