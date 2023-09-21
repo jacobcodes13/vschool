@@ -2,7 +2,7 @@ const express = require("express")
 const Movie = require("../models/movie")
 const movieRouter = express.Router()
 
-// GET One //
+// GET All //
 movieRouter.get("/", (req, res, next) => {
   Movie.find((err, movies) => {
     if (err) {
@@ -10,6 +10,17 @@ movieRouter.get("/", (req, res, next) => {
       return next(err)
     }
     return res.status(200).send(movies)
+  })
+})
+
+// GET One //
+movieRouter.get("/:movieId", (req, res, next) => {
+  Movie.find({ _id: req.params.movieId }, (err, foundMovie) => {
+    if (err) {
+      res.status(500)
+      return next(err)
+    }
+    res.status(200).send(foundMovie)
   })
 })
 
