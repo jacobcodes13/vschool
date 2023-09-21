@@ -25,8 +25,14 @@ movieRouter.get("/:movieId", (req, res, next) => {
 })
 
 // GET by Genre //
-movieRouter.get("/search", (req, res, next) => {
-  
+movieRouter.get("/search/genre", (req, res, next) => {
+  Movie.find({ genre: req.query.genre }, (err, genreOfMovies) => {
+    if (err) {
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(genreOfMovies)
+  })
 })
 
 // POST One //
