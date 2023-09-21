@@ -43,7 +43,7 @@ bountyRouter.delete("/:bountyId", (req, res, next) => {
       res.status(500)
       return next(err)
     }
-    return res.status(200).send(`Successfully deleted ${deletedBounty.firstName} from the MongoDB!`)
+    return res.status(200).send(`Successfully deleted ${deletedBounty.name} from the MongoDB!`)
   })
 })
 

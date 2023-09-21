@@ -24,6 +24,11 @@ movieRouter.get("/:movieId", (req, res, next) => {
   })
 })
 
+// GET by Genre //
+movieRouter.get("/search", (req, res, next) => {
+  
+})
+
 // POST One //
 movieRouter.post("/", (req, res, next) => {
   const newMovie = new Movie(req.body)

@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 
 export default function AddBountyForm(props) {
-  const initialInputs = { name: props.name || "", bountyAmount: props.bountyAmount || 0, type: props.type || "" }
+  console.log(props)
+  const initialInputs = { name: props.name || "", bounty: props.bounty || 0, type: props.type || "" }
 
   const [ inputs, setInputs ] = useState(initialInputs)
 
@@ -16,7 +17,7 @@ export default function AddBountyForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(inputs)
+    // console.log(inputs)
 
     props.submit(inputs, props._id)
 
@@ -34,8 +35,8 @@ export default function AddBountyForm(props) {
       />
       <input
         type="number"
-        name="bountyAmount"
-        value={inputs.bountyAmount}
+        name="bounty"
+        value={inputs.bounty}
         onChange={handleChange}
         placeholder="Bounty Amount"
       />

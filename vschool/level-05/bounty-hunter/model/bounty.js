@@ -6,10 +6,6 @@ const bountySchema = new Schema({
     type: String,
     require: true
   },
-  living: {
-    type: Boolean,
-    require: true
-  },
   bounty: {
     type: Number,
     require: true
