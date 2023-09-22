@@ -4,15 +4,19 @@ const Schema = mongoose.Schema
 const movieSchema = new Schema({
   title: {
     type: String,
-    require: true
-  },
-  description: {
-    type: String,
     required: true
   },
   likes: {
     type: Number,
     default: 0
+  },
+  image: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
   },
   datePosted: {
     type: Date,

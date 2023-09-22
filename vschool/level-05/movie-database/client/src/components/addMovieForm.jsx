@@ -1,3 +1,9 @@
-export default AddMovieForm() {
-  
+
+
+export default  function AddMovieForm() {
+  return (
+    <>
+      
+    </>
+  )
 }

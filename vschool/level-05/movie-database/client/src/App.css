@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+.App {
+  padding: 2rem;
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+
+  border-bottom: 2px solid black;
+}
+
+.navbar--link {
+  font-size: 20px;
+  font-weight: bold;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.navbar--link:hover {
+  color: white;
+
+  background: black;
+}
+
+/* MOVIE */
+
+.movie--header {
+  display: flex;
+  align-items: center;
+}
+
+.like--feature {
+  display: flex;
+}
+
+.like--feature > h2 {
+  margin-right: 5px;
+  margin-left: 20px;
+}
+
+.like--feature > button {
+  background-color: red;
+
+  border: none;
+  border-radius: 2px;
+
+  color: white;
+
+  padding: 2px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.like--button:hover {
+  color: darkred;
+
+  opacity: 70%;
+}
+
+.movie--image--description {
+  display: flex;
+
+  margin-bottom: 2rem;
+}
+
+.movie--image {
+  width: 500px;
+  height: 500px;
+
+  object-fit: contain;
+
+  margin-right: 1rem;
+}
+
+.movie--image--description > h2 {
+  width: 250px;
+
+  font-size: 30px;
+}
