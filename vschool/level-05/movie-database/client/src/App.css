@@ -78,7 +78,7 @@
 .movie--image--description {
   display: flex;
 
-  margin-bottom: 2rem;
+  padding: 1rem;
 }
 
 .movie--image {

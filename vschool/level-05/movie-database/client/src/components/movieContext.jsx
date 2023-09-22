@@ -13,13 +13,20 @@ function MovieContextProvider(props) {
       .catch(err => console.log("Error with GET request: ", err))
   }
 
+  function addMovie() {
+    axios.post("/api/movies")
+      .then(console.log(res.data))
+      .catch(err => console.log("Error with POST request: ", err))
+  }
+
   useEffect(() => {
     getMovies()
   }, [])
 
   return (
     <MovieContext.Provider value={{
-      movies: movies
+      movies: movies,
+      addMovie: addMovie
     }}>
       { props.children }
     </MovieContext.Provider>
