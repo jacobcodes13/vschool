@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 
 export default function AddBountyForm(props) {
-  console.log(props)
+  // console.log(props)
+  
   const initialInputs = { name: props.name || "", bounty: props.bounty || 0, type: props.type || "" }
 
   const [ inputs, setInputs ] = useState(initialInputs)

@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { MovieContext } from "../movieContext"
+import { MovieContext } from "../../movieContext"
 import Movie from "./Movie"
 
 function MovieList() {

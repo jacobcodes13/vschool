@@ -37,7 +37,6 @@ function UglyThingContextProvider(props) {
     .catch(err => console.log("erorr posting uglyThing: ", err))
 
     setInputs({
-
       title: "",
       description: "",
       imgUrl: ""

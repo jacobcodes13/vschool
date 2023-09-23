@@ -7,15 +7,23 @@ function MovieContextProvider(props) {
 
   const [ movies, setMovies ] = useState([])
 
+  const [ userInput, setUserInput ] = useState({
+    title: "",
+    image: "",
+    description: ""
+  })
+
   function getMovies() {
     axios.get("/api/movies")
       .then(res => setMovies(res.data))
       .catch(err => console.log("Error with GET request: ", err))
   }
 
-  function addMovie() {
-    axios.post("/api/movies")
-      .then(console.log(res.data))
+  function addMovie(movieData) {
+    axios.post("/api/movies", movieData)
+      .then(res => {
+        setMovies(prevMovies => [...prevMovies, res.data])
+      })
       .catch(err => console.log("Error with POST request: ", err))
   }
 
@@ -26,7 +34,10 @@ function MovieContextProvider(props) {
   return (
     <MovieContext.Provider value={{
       movies: movies,
-      addMovie: addMovie
+      setMovies: setMovies,
+      addMovie: addMovie,
+      userInput: userInput,
+      setUserInput: setUserInput
     }}>
       { props.children }
     </MovieContext.Provider>

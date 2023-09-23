@@ -1,10 +1,8 @@
-
-
 export default function Movie(props) {
 
   const { movieInfo } = props
 
-  console.log(movieInfo)
+  // console.log(movieInfo)
 
   return (
     <div className="movie--page">

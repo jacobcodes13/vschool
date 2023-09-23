@@ -24,8 +24,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={ <Home /> } />
-          <Route path="/movies" element={ <MovieList /> } />
           <Route path="/addMovie" element={ <AddMovieForm /> } />
+          <Route path="/movies" element={ <MovieList /> } />
         </Routes>
       </Router>
     </div>
