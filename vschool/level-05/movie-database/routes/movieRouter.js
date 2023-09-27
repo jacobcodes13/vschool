@@ -74,4 +74,20 @@ movieRouter.put("/:movieId", (req, res, next) => {
   )
 })
 
+// Like One //
+movieRouter.put("/likes/:movieId", (req, res, next) => {
+  Movie.findOneAndUpdate(
+    { _id: req.params.movieId },
+    { $inc: { likes: 1 } }, // Increments likes by 1
+    { new: true },
+    (err, updatedLikes) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      return res.status(200).send(updatedLikes)
+    }
+  )
+})
+
 module.exports = movieRouter

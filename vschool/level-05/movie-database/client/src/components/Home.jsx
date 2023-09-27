@@ -9,7 +9,7 @@ function Home() {
 
   const homePageMovies = movies.map(movie => {
     return (
-      <div className="home--movie">
+      <div className="home--movie" key={movie._id}>
         <div className="home--movie--header">
           <h1>Title: { movie.title }</h1>
         </div>
