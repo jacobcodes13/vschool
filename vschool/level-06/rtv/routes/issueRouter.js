@@ -1,10 +1,21 @@
 const express = require("express")
-const Issue = require("../models/Issue")
 const issueRouter = express.Router()
+const Issue = require("../models/Issue")
 
 // GET All
 issueRouter.get("/", (req, res, next) => {
   Issue.find((err, issues) => {
+    if (err) {
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(issues)
+  })
+})
+
+// GET Issue by User Id
+issueRouter.get("/user", (req, res, next) => {
+  Issue.find({ user: req.auth._id }, (err, issues) => {
     if (err) {
       res.status(500)
       return next(err)
@@ -29,7 +40,7 @@ issueRouter.post("/", (req, res, next) => {
 // DELETE One
 issueRouter.delete("/:issueId", (req, res, next) => {
   Issue.findOneAndDelete(
-    { _id: req.params.issueId },
+    { _id: req.params.issueId, user: req.auth._id },
     (err, deletedIssue) => {
       if (err) {
         res.status(500)
@@ -43,7 +54,7 @@ issueRouter.delete("/:issueId", (req, res, next) => {
 // UPDATE One
 issueRouter.put("/:issueId", (req, res, next) => {
   Issue.findOneAndUpdate(
-    { _id: req.params.issueId },
+    { _id: req.params.issueId, user: req.auth._id },
     req.body,
     { new: true },
     (err, updatedIssue) => {
@@ -57,4 +68,4 @@ issueRouter.put("/:issueId", (req, res, next) => {
 })
 
 
-exports.module = issueRouter
+module.exports = issueRouter

@@ -15,9 +15,10 @@ mongoose.connect("mongodb+srv://jacobcodes13:OFvV1MQmtq9zeDAX@rtv.f9ckq7d.mongod
   console.log("Connected to MongoDB!", err)
 })
 
-app.use("/user", require("./routes/userRouter"))
+app.use("/api/auth", require("./routes/userRouter"))
 app.use("/api", expressjwt({ secret: process.env.SECRET, algorithms: ["HS256"] }))
-app.use("/api/issue", require("./routes/issueRouter"))
+app.use("/api/issues", require("./routes/issueRouter"))
+app.use("/api/comments", require("./routes/commentRouter"))
 
 app.use((err, req, res, next) => {
   console.log(err)
@@ -27,6 +28,6 @@ app.use((err, req, res, next) => {
   return res.send({ errMsg: err.message })
 })
 
-app.listen(8850, () => {
-  console.log("App is running on Port 8850!")
+app.listen(6850, () => {
+  console.log("App is running on Port 6850!")
 })
