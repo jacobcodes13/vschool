@@ -3,6 +3,14 @@ import axios from "axios"
 
 export const UserContext = React.createContext()
 
+const userAxios = axios.create()
+
+userAxios.interceptors.request.use(config => {
+  const token = localStorage.getItem("token")
+  config.headers.Authorization = `Bearer ${token}`
+  return config
+})
+
 export default function UserProvider(props) {
 
   const initialState = {
@@ -35,6 +43,7 @@ export default function UserProvider(props) {
         const { user, token } = res.data
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
+        getUserIssues()
 
         setUserState(prevUserState => ({
           ...prevUserState,
@@ -45,12 +54,46 @@ export default function UserProvider(props) {
       .catch(err => console.dir(err.response.data.errMsg))
   }
 
+  function logout() {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    setUserState({
+      user: {},
+      token: "",
+      issues: []
+    })
+  }
+
+  function getUserIssues() {
+    userAxios.get("/api/issues/user")
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          issues: res.data
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+  }
+
+  function addIssue(newIssue) {
+    userAxios.post("/api/issues", newIssue)
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          issues: [ ...prevState.issues, res.data ]
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+  }
+
   return (
     <UserContext.Provider
       value={{
         ...userState,
         signup,
-        login
+        login,
+        logout,
+        addIssue
       }}>
       { props.children }
     </UserContext.Provider>
