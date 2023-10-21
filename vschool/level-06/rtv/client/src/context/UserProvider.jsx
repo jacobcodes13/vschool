@@ -13,11 +13,23 @@ userAxios.interceptors.request.use(config => {
 
 export default function UserProvider(props) {
 
+  const storedUser = localStorage.getItem("user");
+  const storedToken = localStorage.getItem("token");
+
   const initialState = {
-    user: JSON.parse(localStorage.getItem("user")) || {},
-    token: localStorage.getItem("token") || "",
+    user: isJSON(storedUser) ? JSON.parse(storedUser) : {},
+    token: isJSON(storedToken) ? storedToken : "",
     issues: [],
     errMsg: ""
+  };
+
+  function isJSON(str) {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   const [ userState, setUserState ] = useState(initialState)
