@@ -16,7 +16,8 @@ export default function UserProvider(props) {
   const initialState = {
     user: JSON.parse(localStorage.getItem("user")) || {},
     token: localStorage.getItem("token") || "",
-    issues: []
+    issues: [],
+    errMsg: ""
   }
 
   const [ userState, setUserState ] = useState(initialState)
@@ -34,7 +35,7 @@ export default function UserProvider(props) {
           token
         }))
       })
-      .catch(err => console.dir(err.response.data.errMsg))
+      .catch(err => handleAuthError(err.response.data.errMsg))
   }
 
   function login(credentials) {
@@ -51,7 +52,7 @@ export default function UserProvider(props) {
           token
         }))
       })
-      .catch(err => console.dir(err.response.data.errMsg))
+      .catch(err => handleAuthError(err.response.data.errMsg))
   }
 
   function logout() {
@@ -62,6 +63,20 @@ export default function UserProvider(props) {
       token: "",
       issues: []
     })
+  }
+
+  function handleAuthError(errMsg) {
+    setUserState(prevState => ({
+      ...prevState,
+      errMsg
+    }))
+  }
+
+  function resetAuthError() {
+    setUserState(prevState => ({
+      ...prevState,
+      errMsg: ""
+    }))
   }
 
   function getUserIssues() {
@@ -93,7 +108,8 @@ export default function UserProvider(props) {
         signup,
         login,
         logout,
-        addIssue
+        addIssue,
+        resetAuthError
       }}>
       { props.children }
     </UserContext.Provider>

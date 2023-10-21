@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Navbar logout={ logout } />
+      { token && <Navbar logout={ logout } /> }
       <Routes>
         <Route path="/" element={ token ? <Navigate to="/profile" /> : <Auth /> } />
         <Route path="/profile" element={ <Profile /> } />
