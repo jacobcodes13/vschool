@@ -13,9 +13,9 @@ commentRouter.get("/", (req, res, next) => {
   })
 })
 
-// GET Comment by User Id
-commentRouter.get("/user", (req, res, next) => {
-  Comment.find({ user: req.auth._id }, (err, comment) => {
+// GET Comment by Issue Id
+commentRouter.get("/:issueId", (req, res, next) => {
+  Comment.find({ issueId: req.params.issueId }, (err, comment) => {
     if (err) {
       res.status(500)
       return next(err)
@@ -25,10 +25,12 @@ commentRouter.get("/user", (req, res, next) => {
 })
 
 // POST One
-commentRouter.post("/", (req, res, next) => {
+commentRouter.post("/:issueId", (req, res, next) => {
   req.body.user = req.auth._id
-  const newIssue = new Comment(req.body)
-  newIssue.save((err, savedComment) => {
+  req.body.issue = req.params.issueId
+  const newComment = new Comment(req.body)
+  
+  newComment.save((err, savedComment) => {
     if (err) {
       res.status(500)
       return next(err)

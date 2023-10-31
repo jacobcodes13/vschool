@@ -14,7 +14,7 @@ issueRouter.get("/", (req, res, next) => {
 })
 
 // GET Issue by User Id
-issueRouter.get("/user", (req, res, next) => {
+issueRouter.get("/:userId", (req, res, next) => {
   Issue.find({ user: req.auth._id }, (err, issues) => {
     if (err) {
       res.status(500)
@@ -28,6 +28,7 @@ issueRouter.get("/user", (req, res, next) => {
 issueRouter.post("/", (req, res, next) => {
   req.body.user = req.auth._id
   const newIssue = new Issue(req.body)
+
   newIssue.save((err, savedIssue) => {
     if (err) {
       res.status(500)
@@ -56,6 +57,46 @@ issueRouter.put("/:issueId", (req, res, next) => {
   Issue.findOneAndUpdate(
     { _id: req.params.issueId, user: req.auth._id },
     req.body,
+    { new: true },
+    (err, updatedIssue) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      return res.status(201).send(updatedIssue)
+    }
+  )
+})
+
+// UpVotes
+
+issueRouter.put("/upvotes/:issueId", (req, res, next) => {
+  Issue.findOneAndUpdate(
+    { _id: req.params.issueId },
+    {
+      $addToSet: { upVotes: req.auth._id },
+      $pull: { downVotes: req.auth._id }
+    },
+    { new: true },
+    (err, updatedIssue) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      return res.status(201).send(updatedIssue)
+    }
+  )
+})
+
+// DownVotes
+
+issueRouter.put("/downvotes/:issueId", (req, res, next) => {
+  Issue.findOneAndUpdate(
+    { _id: req.params.issueId },
+    {
+      $addToSet: { downVotes: req.auth._id },
+      $pull: { upVotes: req.auth._id }
+    },
     { new: true },
     (err, updatedIssue) => {
       if (err) {

@@ -39,7 +39,7 @@ combineFruit(["apple", "pear"],
 */
 
 function combineFruit(fruit, sweets, vegetables){
-  console.log( { fruit, sweets, vegetables} )
+  console.log( { fruit, sweets, vegetables } )
 }
 
 combineFruit(["apple", "pear"],

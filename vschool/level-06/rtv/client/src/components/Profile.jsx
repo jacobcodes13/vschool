@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 import IssueForm from "./IssueForm"
 import IssueList from "./IssueList"
-import Issue from "./Issue"
 import { UserContext } from "../context/UserProvider"
 
 export default function Profile() {
@@ -18,7 +17,7 @@ export default function Profile() {
       <h3>Add A Issue</h3>
       <IssueForm addIssue={ addIssue } />
       <h3>Your Issues</h3>
-      <IssueList issues={ issues } />
+      <IssueList issues={ issues } username={ username } />
     </div>
   )
 }
