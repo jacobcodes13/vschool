@@ -14,10 +14,14 @@ const movieSchema = new Schema({
     type: String,
     required: true
   },
-  likes: {
-    type: Number,
-    default: 0
-  },
+  like: [{
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }],
+  removeLike: [{
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }],
   user: {
     type: Schema.Types.ObjectId,
     ref: "User"

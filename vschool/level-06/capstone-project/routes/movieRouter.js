@@ -64,5 +64,45 @@ movieRouter.put("/:movieId", (req, res, next) => {
   )
 })
 
+// LIKE //
+movieRouter.put("/like/:movieId", (req, res, next) => {
+  Movie.findByIdAndUpdate(
+    { _id: req.params.movieId },
+    {
+      $addToSet: { like: req.auth._id },
+      $pull: { removeLike: req.auth._id }
+    },
+    { new: true },
+    async (err, updatedMovie) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      const updatedMovieWithUser = await updatedMovie.populate("user", "-password")
+      return res.status(201).send(updatedMovieWithUser)
+    }
+  )
+})
+
+// REMOVE LIKE //
+movieRouter.put("/removeLike/:movieId", (req, res, next) => {
+  Movie.findByIdAndUpdate(
+    { _id: req.params._id },
+    {
+      $addToSet: { removeLike: req.auth._id },
+      $pull: { like: req.auth._id }
+    },
+    { new: true },
+    async (err, updatedMovie) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      const updatedMovieWithUser = await updatedMovie.populate("user", "-password")
+      return res.status(201).send(updatedMovieWithUser)
+    }
+  )
+})
+
 
 module.exports = movieRouter
