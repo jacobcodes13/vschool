@@ -17,7 +17,7 @@ export default function Profile() {
       <h3>Add A Issue</h3>
       <IssueForm addIssue={ addIssue } />
       <h3>Your Issues</h3>
-      <IssueList issues={ issues } username={ username } />
+      <IssueList issues={ issues } />
     </div>
   )
 }

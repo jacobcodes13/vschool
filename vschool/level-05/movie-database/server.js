@@ -1,10 +1,8 @@
 // Dependencies //
 const express = require("express")
 const app = express()
-require("dotenv").config
 const morgan = require("morgan")
 const mongoose = require("mongoose")
-const { expressjwt } = require("express-jwt")
 
 
 // 153dE9GX2UdiRMqw   mongodb+srv://jacobcodes13:<password>@cluster0.rt2skov.mongodb.net/movieDatabase //
@@ -19,7 +17,6 @@ mongoose.connect("mongodb+srv://jacobcodes13:153dE9GX2UdiRMqw@cluster0.rt2skov.m
 })
 
 app.use("/api/movies", require("./routes/movieRouter"))
-app.use("/api", require({ secret: process.env.SECRET, algorithms: ["HS256"] }))
 
 // Error Handler //
 app.use((err, req, res, next) => {

@@ -140,25 +140,25 @@ function UserProvider(props) {
       .catch(err => console.log(err))
   }
 
-  // // VOTING //
+  // VOTING //
 
-  // function upVoteIssue(issueId) {
-  //   userAxios.put(`/api/issues/upvotes/${ issueId }`)
-  //     .then(res => {
-  //       setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ? issue : res.data))
-  //       setUserState(prevUserState => ({ ...prevState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  function upVoteIssue(issueId) {
+    userAxios.put(`/api/issues/upvotes/${ issueId }`)
+      .then(res => {
+        setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ? issue : res.data))
+        setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
+      })
+      .catch(err => console.log(err))
+  }
 
-  // function downVoteIssue(issueId) {
-  //   userAxios.put(`/api/issues/downvotes/${ issueId }`)
-  //     .then(res => {
-  //       setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ? issue : res.data))
-  //       setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  function downVoteIssue(issueId) {
+    userAxios.put(`/api/issues/downvotes/${ issueId }`)
+      .then(res => {
+        setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ? issue : res.data))
+        setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
+      })
+      .catch(err => console.log(err))
+  }
 
   // console.log(userState)
   // console.log(allIssues)
@@ -178,8 +178,8 @@ function UserProvider(props) {
         getAllComments,
         addComment,
         comments,
-        // upVoteIssue,
-        // downVoteIssue
+        upVoteIssue,
+        downVoteIssue
       }}>
       { props.children }
     </UserContext.Provider>

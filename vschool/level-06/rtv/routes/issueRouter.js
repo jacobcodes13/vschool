@@ -1,58 +1,87 @@
-const express = require("express")
-const issueRouter = express.Router()
-const Issue = require("../models/Issue")
+const express = require("express");
+const issueRouter = express.Router();
+const Issue = require("../models/Issue");
+// const Comment = require('../models/Comment')
 
-// GET All
+// GET All //
 issueRouter.get("/", (req, res, next) => {
-  Issue.find((err, issues) => {
+  Issue.find(async (err, issues) => {
     if (err) {
-      res.status(500)
-      return next(err)
+      res.status(500);
+      return next(err);
     }
-    return res.status(200).send(issues)
-  })
-})
+    const issueListUsers = await Promise.all(
+      issues.map(async (issue) => {
+        const issueUser = await issue.populate("user", "-password");
+        return { ...issueUser.toObject() };
+      })
+    );
+    return res.status(200).send(issueListUsers);
+  });
+});
 
-// GET Issue by User Id
+// Version 7 Mongoose //
+// issueRouter.get("/", async (req, res, next) => {
+//   try {
+//     const issues = await Issue.find();
+
+//     const issueListUsers = await Promise.all(
+//       issues.map(async (issue) => {
+//         const issueUser = await issue.populate("user", "-password");
+//         const issueComments = await Comment.find({issue: issue._id}).populate('user', '-password')
+//         return { ...issueUser.toObject(), issueComments };
+//       })
+//     );
+//     return res.status(200).send(issueListUsers);
+//   } catch (err) {
+//     res.status(500);
+//     return next(err);
+//   }
+// });
+
+// GET Issue by User Id //
 issueRouter.get("/:userId", (req, res, next) => {
   Issue.find({ user: req.auth._id }, (err, issues) => {
     if (err) {
-      res.status(500)
-      return next(err)
+      res.status(500);
+      return next(err);
     }
-    return res.status(200).send(issues)
-  })
-})
+    return res.status(200).send(issues);
+  });
+});
 
-// POST One
+// POST One //
 issueRouter.post("/", (req, res, next) => {
-  req.body.user = req.auth._id
-  const newIssue = new Issue(req.body)
+  req.body.user = req.auth._id;
+  const newIssue = new Issue(req.body);
 
-  newIssue.save((err, savedIssue) => {
+  newIssue.save(async(err, savedIssue) => {
     if (err) {
-      res.status(500)
-      return next(err)
+      res.status(500);
+      return next(err);
     }
-    return res.status(200).send(savedIssue)
-  })
-})
+    const savedIssueWithUser = await savedIssue.populate("user", "-password")
+    return res.status(200).send(savedIssueWithUser);
+  });
+});
 
-// DELETE One
+// DELETE One //
 issueRouter.delete("/:issueId", (req, res, next) => {
   Issue.findOneAndDelete(
     { _id: req.params.issueId, user: req.auth._id },
     (err, deletedIssue) => {
       if (err) {
-        res.status(500)
-        return next(err)
+        res.status(500);
+        return next(err);
       }
-      return res.status(200).send(`Successfully deleted issue: ${ deletedIssue.title }`)
+      return res
+        .status(200)
+        .send(`Successfully deleted issue: ${deletedIssue.title}`);
     }
-  )
-})
+  );
+});
 
-// UPDATE One
+// UPDATE One //
 issueRouter.put("/:issueId", (req, res, next) => {
   Issue.findOneAndUpdate(
     { _id: req.params.issueId, user: req.auth._id },
@@ -60,53 +89,52 @@ issueRouter.put("/:issueId", (req, res, next) => {
     { new: true },
     (err, updatedIssue) => {
       if (err) {
-        res.status(500)
-        return next(err)
+        res.status(500);
+        return next(err);
       }
-      return res.status(201).send(updatedIssue)
+      return res.status(201).send(updatedIssue);
     }
-  )
-})
+  );
+});
 
-// UpVotes
-
+// UpVotes //
 issueRouter.put("/upvotes/:issueId", (req, res, next) => {
   Issue.findOneAndUpdate(
     { _id: req.params.issueId },
     {
       $addToSet: { upVotes: req.auth._id },
-      $pull: { downVotes: req.auth._id }
+      $pull: { downVotes: req.auth._id },
     },
     { new: true },
-    (err, updatedIssue) => {
+    async(err, updatedIssue) => {
       if (err) {
-        res.status(500)
-        return next(err)
+        res.status(500);
+        return next(err);
       }
-      return res.status(201).send(updatedIssue)
+      const updatedIssueWithUser = await updatedIssue.populate('user', '-password')
+      return res.status(201).send(updatedIssueWithUser);
     }
-  )
-})
+  );
+});
 
-// DownVotes
-
+// DownVotes //
 issueRouter.put("/downvotes/:issueId", (req, res, next) => {
   Issue.findOneAndUpdate(
     { _id: req.params.issueId },
     {
       $addToSet: { downVotes: req.auth._id },
-      $pull: { upVotes: req.auth._id }
+      $pull: { upVotes: req.auth._id },
     },
     { new: true },
-    (err, updatedIssue) => {
+    async(err, updatedIssue) => {
       if (err) {
-        res.status(500)
-        return next(err)
+        res.status(500);
+        return next(err);
       }
-      return res.status(201).send(updatedIssue)
+      const updatedIssueWithUser = await updatedIssue.populate('user', '-password')
+      return res.status(201).send(updatedIssueWithUser);
     }
-  )
-})
+  );
+});
 
-
-module.exports = issueRouter
+module.exports = issueRouter;
