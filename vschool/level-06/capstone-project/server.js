@@ -18,6 +18,7 @@ mongoose.connect("mongodb+srv://jacobnevitt13:RuLecxxBafpUmWCo@level-6-capstone.
 app.use("/api/auth", require("./routes/userRouter"))
 app.use("/api", expressjwt({ secret: process.env.SECRET, algorithms: ["HS256"] }))
 app.use("/api/movies", require("./routes/movieRouter"))
+app.use("/api/comments", require("./routes/commentRouter"))
 
 app.use((err, req, res, next) => {
   console.log(err)

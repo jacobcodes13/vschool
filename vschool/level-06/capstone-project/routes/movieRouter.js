@@ -59,7 +59,7 @@ movieRouter.put("/:movieId", (req, res, next) => {
         res.status(500)
         return next(err)
       }
-      return res.status(201).send(Movie.updatedMovie)
+      return res.status(201).send(updatedMovie)
     }
   )
 })
