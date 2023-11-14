@@ -23,7 +23,6 @@ export default function CommentForm(props) {
   function handleSubmit(e) {
     e.preventDefault()
     addComment(inputs, _id)
-    // setInputs(initialInputs)
     setToggle(false)
   }
 

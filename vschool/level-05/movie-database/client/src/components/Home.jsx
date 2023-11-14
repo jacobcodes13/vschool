@@ -9,18 +9,16 @@ function Home() {
 
   const homePageMovies = movies.map(movie => {
     return (
-      <div className="home--movie" key={movie._id}>
-        <div className="home--movie--header">
+      <div className="home-movie" key={movie._id}>
+        <div className="home-movie-header">
           <h1>Title: { movie.title }</h1>
         </div>
-        <div className="home--movie--image">
-          <img onClick={() => navigate("/movies")} className="movie--image" src={ movie.image } alt="Cover Image" />
+        <div className="home-movie-image">
+          <img onClick={() => navigate("/movies")} className="movie-image" src={ movie.image } alt="Cover Image" />
         </div>
       </div>
     )
   })
-
-  // console.log(homePageMovies)
 
   return (
     <div className="home--page">

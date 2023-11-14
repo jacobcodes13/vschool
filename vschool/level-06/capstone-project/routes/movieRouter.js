@@ -19,6 +19,17 @@ movieRouter.get("/", (req, res, next) => {
   })
 })
 
+// GET User Movies //
+movieRouter.get("/:userId", (req, res, next) => {
+  Movie.find({ user: req.auth._id }, (err, movies) => {
+    if (err) {
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(movies)
+  })
+})
+
 // POST One //
 movieRouter.post("/", (req, res, next) => {
   req.body.user = req.auth._id
@@ -85,9 +96,9 @@ movieRouter.put("/like/:movieId", (req, res, next) => {
 })
 
 // REMOVE LIKE //
-movieRouter.put("/removeLike/:movieId", (req, res, next) => {
+movieRouter.put("/removelike/:movieId", (req, res, next) => {
   Movie.findByIdAndUpdate(
-    { _id: req.params._id },
+    { _id: req.params.movieId },
     {
       $addToSet: { removeLike: req.auth._id },
       $pull: { like: req.auth._id }

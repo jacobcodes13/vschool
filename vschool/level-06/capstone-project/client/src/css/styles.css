@@ -1,42 +1,269 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.app {
   padding: 2rem;
+}
+
+/*  NAVBAR  */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+
+  border-bottom: 2px solid black;
+}
+
+.navbar > button {
+  padding: .5rem;
+  
+
+  background: black;
+  color: white;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: black;
+  background: white;
+
+  border: 1px solid black;
+}
+
+.navbar-link {
+  font-size: 20px;
+  font-weight: bold;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.navbar-link:hover {
+  color: white;
+
+  background: black;
+}
+
+/*  AUTH/USER  */
+
+.auth-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+}
+
+.auth-page > h1 {
+  font-size: 2em;
+
+  margin: 24px;
+}
+
+.auth-page > p {
+  margin: 16px;
+
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.auth-page > form {
+  padding: 20px;
+
+  border-radius: 5px;
+
+  background-color: #4FE2F5;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-page > form > input {
+  margin: 16px 8px;
+  padding: 8px;
+
+  border-radius: 4px;
+  border: none;
+}
+
+.auth-page > form > button {
+  margin: 16px 8px;
+  padding: 8px;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+/*  MOVIE  */
+
+.movie-header {
+  display: flex;
+  align-items: center;
+}
+
+.movie-header > h1 {
+  font-size: 30px;
+}
+
+.movie-image-description {
+  display: flex;
+
+  padding: 1rem;
+}
+
+.movie-image {
+  width: 500px;
+  height: 500px;
+
+  object-fit: contain;
+}
+
+.movie-image-description > h2 {
+  width: 370px;
+
+  font-size: 25px;
+}
+
+/*  PROFILE  */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.profile > h1 {
+  margin: 8px;
+  font-size: 2em;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.profile > h3 {
+  margin: 16px 0;
+  text-decoration: underline;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile > form {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  background-color: #4FE2F5;
+  padding: 16px;
+  border-radius: 5px
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.profile > form > input,
+.profile > form > button {
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 5px;
 }
 
-.card {
-  padding: 2em;
+.profile > form > button {
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+/*  HOME  */
+
+.home-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.home-page > div {
+  border-bottom: 1px solid black;
+}
+
+.home-movie {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 0rem;
+}
+
+.home-movie-header {
+  display: flex;
+  justify-content: center;
+}
+
+.home-movie-image {
+  display: flex;
+  justify-content: center;
+
+  margin: 10px;
+
+  cursor: pointer;
+}
+
+.home-movie {
+  align-items: center;
+}
+
+.home-movie button {
+  display: none;
+}
+
+.home-movie:hover button {
+  display: block;
+
+  cursor: pointer;
+}
+
+/*  COMMENTS  */
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.comment-list > form {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  background-color: #4FE2F5;
+  padding: 16px;
+  border-radius: 5px
+}
+
+.comment-list > form > input,
+.comment-list > form > button {
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.comment-list > form > button {
+  cursor: pointer;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.comment > div {
+  margin-right: 1rem;
+  padding: 5px;
+  border-right: 1px solid black;;
 }

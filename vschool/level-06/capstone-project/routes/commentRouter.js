@@ -28,4 +28,34 @@ commentRouter.post("/:movieId", (req, res, next) => {
   })
 })
 
+// DELETE One //
+commentRouter.delete("/:commentId", (req, res, next) => {
+  Comment.findOneAndDelete(
+    { _id: req.params.commentId, user: req.auth._id },
+    (err, deletedComment) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      return res.status(200).send(`Successfully deleted movie: ${ deletedComment.description }`)
+    }
+  )
+})
+
+// UPDATE One //
+commentRouter.put("/:commentId", (req, res, next) => {
+  Comment.findOneAndUpdate(
+    { _id:req.params.commentId, user: req.auth._id },
+    req.body,
+    { new: true },
+    (err, updatedComment) => {
+      if (err) {
+        res.status(500)
+        return next(err)
+      }
+      return res.status(201).send(updatedComment)
+    }
+  )
+})
+
 module.exports = commentRouter

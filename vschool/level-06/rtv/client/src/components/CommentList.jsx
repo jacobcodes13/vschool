@@ -4,8 +4,6 @@ import { UserContext } from "../context/UserProvider";
 
 export default function CommentList(props) {
 
-  // console.log(props)
-
   const { comments } = useContext(UserContext)
 
   const { _id } = props
@@ -15,7 +13,6 @@ export default function CommentList(props) {
   return (
     <div>
       { filteredComments.map(comment => 
-        // console.log(comment)
         <Comment comment={ comment } key={ comment._id } />
       ) }
     </div>

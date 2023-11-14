@@ -130,8 +130,6 @@ function UserProvider(props) {
   }
 
   function addComment(newComment, issueId) {
-    // console.log("addComment in UserProvider: ", issueId)
-    console.log(newComment)
     userAxios.post(`/api/comments/${ issueId }`, newComment)
       .then(res => {
         // console.log(res.data)

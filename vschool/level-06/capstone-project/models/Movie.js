@@ -23,7 +23,7 @@ const movieSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   }],
-  removeLike: [{
+  removelike: [{
     type: Schema.Types.ObjectId,
     ref: "User"
   }],
