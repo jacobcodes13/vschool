@@ -18,7 +18,7 @@ export default function Home() {
       // console.log(movie)
       const totalComments = comments.filter(comment => comment.movie === movie._id).length
 
-      const totalLikes = movie.like.length - movie.removeLike.length
+      const totalLikes = movie.like.length - movie.removelike.length
 
       return (
         <div className="home-movie" key={movie._id}>
